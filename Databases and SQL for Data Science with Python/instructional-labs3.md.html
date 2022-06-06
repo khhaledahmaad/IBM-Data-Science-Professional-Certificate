@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<!-- saved from url=(0322)https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DB0201EN-SkillsNetwork/labs/Labs_Coursera_V5/labs/Lab%20-%20Sign%20up%20for%20IBM%20Cloud%20-%20Create%20Db2%20service%20instance%20-%20Get%20started%20with%20the%20Db2%20console/instructional-labs.md.html?origin=www.coursera.org -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./instructional-labs3.md_files/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./instructional-labs3.md_files/default.min.css">
+  <style type="text/css">/* this file is used for labs on cognitiveclass.ai that were written in markdown */
+
+/* applies to images, i.e. "![]()" in markdown */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* add padding and margins */
+body {
+  padding: 10px;
+  margin: 10px;
+}
+
+/* applies to tables, i.e. "|--|--|" in markdown */
+table td,
+table th {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+/* applies to using quotes, i.e. ">" in markdown */
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 1em 10px 0.1em 10px;
+  quotes: '\201C''\201D''\2018''\2019';
+}
+
+/* the headers need some spacing */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+  padding-top: 20px;
+}
+
+/* Add padding between nested list item */
+ul > li > ul {
+  padding-bottom: 1rem;
+}
+
+.code-badge-language {
+  display: none;
+}
+.code-badge-copy-icon {
+  background: url('data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhciIgZGF0YS1pY29uPSJjb3B5IiBjbGFzcz0ic3ZnLWlubGluZS0tZmEgZmEtY29weSBmYS13LTE0IiByb2xlPSJpbWciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDQ0OCA1MTIiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTQzMy45NDEgNjUuOTQxbC01MS44ODItNTEuODgyQTQ4IDQ4IDAgMCAwIDM0OC4xMTggMEgxNzZjLTI2LjUxIDAtNDggMjEuNDktNDggNDh2NDhINDhjLTI2LjUxIDAtNDggMjEuNDktNDggNDh2MzIwYzAgMjYuNTEgMjEuNDkgNDggNDggNDhoMjI0YzI2LjUxIDAgNDgtMjEuNDkgNDgtNDh2LTQ4aDgwYzI2LjUxIDAgNDgtMjEuNDkgNDgtNDhWOTkuODgyYTQ4IDQ4IDAgMCAwLTE0LjA1OS0zMy45NDF6TTI2NiA0NjRINTRhNiA2IDAgMCAxLTYtNlYxNTBhNiA2IDAgMCAxIDYtNmg3NHYyMjRjMCAyNi41MSAyMS40OSA0OCA0OCA0OGg5NnY0MmE2IDYgMCAwIDEtNiA2em0xMjgtOTZIMTgyYTYgNiAwIDAgMS02LTZWNTRhNiA2IDAgMCAxIDYtNmgxMDZ2ODhjMCAxMy4yNTUgMTAuNzQ1IDI0IDI0IDI0aDg4djIwMmE2IDYgMCAwIDEtNiA2em02LTI1NmgtNjRWNDhoOS42MzJjMS41OTEgMCAzLjExNy42MzIgNC4yNDMgMS43NTdsNDguMzY4IDQ4LjM2OGE2IDYgMCAwIDEgMS43NTcgNC4yNDNWMTEyeiI+PC9wYXRoPjwvc3ZnPg==');
+  background-size: 100% 100%;
+}
+
+.code-badge {
+  bottom: 0 !important;
+  top: unset !important;
+  background: unset !important;
+}
+
+.code-badge > .code-badge-check-icon {
+  background: green;
+}
+.code-badge-check-icon {
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: 0 7px;
+  background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGFyaWEtaGlkZGVuPSJ0cnVlIiBmb2N1c2FibGU9ImZhbHNlIiBkYXRhLXByZWZpeD0iZmFzIiBkYXRhLWljb249ImNoZWNrIiBjbGFzcz0ic3ZnLWlubGluZS0tZmEgZmEtY2hlY2sgZmEtdy0xNiIgcm9sZT0iaW1nIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9IiYjMTA7ICAgIGNvbG9yOiAjMmFmZjMyOyYjMTA7Ij48cGF0aCBmaWxsPSJjdXJyZW50Q29sb3IiIGQ9Ik0xNzMuODk4IDQzOS40MDRsLTE2Ni40LTE2Ni40Yy05Ljk5Ny05Ljk5Ny05Ljk5Ny0yNi4yMDYgMC0zNi4yMDRsMzYuMjAzLTM2LjIwNGM5Ljk5Ny05Ljk5OCAyNi4yMDctOS45OTggMzYuMjA0IDBMMTkyIDMxMi42OSA0MzIuMDk1IDcyLjU5NmM5Ljk5Ny05Ljk5NyAyNi4yMDctOS45OTcgMzYuMjA0IDBsMzYuMjAzIDM2LjIwNGM5Ljk5NyA5Ljk5NyA5Ljk5NyAyNi4yMDYgMCAzNi4yMDRsLTI5NC40IDI5NC40MDFjLTkuOTk4IDkuOTk3LTI2LjIwNyA5Ljk5Ny0zNi4yMDQtLjAwMXoiLz48L3N2Zz4=');
+  background-size: 100% 100%;
+}
+</style></head>
+  <body>
+    <img src="./instructional-labs3.md_files/IDSNlogo.png" width="200" height="200">
+    <h1>Hands-on Lab: Create Db2 service instance and Get started with the Db2 console</h1>
+    <p><strong>Estimated time needed:</strong> 15 minutes</p>
+    <p>From now on, the hands-on labs for this course require an environment for working with a relational database. To get you up and running quickly we will do so on the Cloud, so you don't have to worry about downloading or installing anything, rather, simply access your database from your web browser. IBM Cloud provides a large number of Data and Analytics services, including IBM Db2, a next generation SQL database.</p>
+    <img src="./instructional-labs3.md_files/ibmcloud.png" width="140" height="100">
+    <h1>Objectives</h1>
+    <p>After completing this lab, you will be able to:</p>
+    <ul>
+      <li>Use IBM cloud account to create and use resources</li>
+      <li>Create an instance of a Db2 service</li>
+      <li>Locate and explore the Db2 console</li>
+    </ul>
+    <h2>Pre-requisites</h2>
+    <p>You will need an IBM Cloud account to do this lab. If you have not created one already, click on this <a href="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-CC0100EN-SkillsNetwork/labs/IBMCloud_accountCreation/CreateIBMCloudAccount.md.html" target="_blank" rel="external">link</a> and follow the instructions to create an IBM Cloud account.</p>
+    <h1>Task 1: Create an instance of IBM Db2 Lite plan</h1>
+    <p>Now let us introduce you to Db2 on IBM Cloud. IBM Db2 is a next generation SQL database provisioned for you in the cloud. You can use Db2 on IBM Cloud just as you would use any database software (RDBMS), but without the overhead and expense of hardware setup or software installation and maintenance. Among the service plans offered for Db2 on IBM Cloud is the Lite plan, which is free to use. You can use your database instance to store relational data, analyze data using a built-in SQL editor, or by connecting your own apps.</p>
+    <p>Note that IBM Cloud also provides other variants of Db2 such as Db2 Hosted and Db2 Warehouse on Cloud, which is also referred to in this course. However, for the labs in this course, we will utilize the Db2 service since it comes with a Lite plan which is free to use.</p>
+    <p>Please follow the steps given below to provision an instance of Db2 on IBM Cloud.</p>
+    <ol>
+      <li>
+        <p>Login to <a href="https://cloud.ibm.com/?utm_medium=Exinfluencer&amp;utm_source=Exinfluencer&amp;utm_content=000026UJ&amp;utm_term=10006555&amp;utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMDeveloperSkillsNetworkDB0201ENSkillsNetwork20127838-2022-01-01" target="_blank" rel="external">IBM Cloud</a></p>
+      </li>
+      <li>
+        <p>Go to <a href="https://cloud.ibm.com/catalog/services/db2?utm_medium=Exinfluencer&amp;utm_source=Exinfluencer&amp;utm_content=000026UJ&amp;utm_term=10006555&amp;utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMDeveloperSkillsNetworkDB0201ENSkillsNetwork20127838-2022-01-01" target="_blank" rel="external">the DB2 Services page on IBM Catalog</a>.</p>
+      </li>
+      <li>
+        <p>Select a location where you want the service to be hosted.</p>
+      </li>
+    </ol>
+    <blockquote>
+      <p><strong>Note</strong>: Depending on the Country of your IBM Cloud account a location to deploy will be pre-selected. For example, if you are in the US, the default region will be Dallas. Users from the UK will see London and so on. It is best to go with the default location that is closest to you. Make sure a <strong>Region</strong> is selected as location, not a <strong>Data center.</strong></p>
+    </blockquote>
+    <p>
+      <img src="./instructional-labs3.md_files/Db2Details.jpg" alt="Datacenter location for IBM Cloud accounts.">
+    </p>
+    <ol start="4">
+      <li>
+        <p>Scroll down to the Pricing Plans section and select the <strong>Lite plan</strong> (it’s a free plan, and available only in <strong>DALLAS</strong> at this point of time) or any other plans as required.</p>
+      </li>
+      <li>
+        <p>Then click on the <strong>Create</strong> button towards the lower-right of the page. It will spin for a few seconds (typically less than 30s) and then you should see a Service Created message indicating that your instance of Db2 was created successfully.</p>
+      </li>
+    </ol>
+    <p>
+      <img src="./instructional-labs3.md_files/Instance.jpg" alt="Choose a plan to create an instance.">
+    </p>
+    <h1>Task 2: Locate and Explore the Db2 console</h1>
+    <p>Now that you have created your database instance, you need to know how to get to it, explore the console and start working with it.</p>
+    <ul>
+      <li><strong>NOTE:</strong> You are not required to compose and run any SQL query on this exercise.</li>
+    </ul>
+    <ol>
+      <li>
+        <p>To access your database instance, go to your IBM Cloud Resource List (you may need to log into IBM Cloud in the process) directly at: <a href="https://cloud.ibm.com/resources?utm_medium=Exinfluencer&amp;utm_source=Exinfluencer&amp;utm_content=000026UJ&amp;utm_term=10006555&amp;utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMDeveloperSkillsNetworkDB0201ENSkillsNetwork20127838-2022-01-01" target="_blank" rel="external">cloud.ibm.com/resources</a></p>
+        <ul>
+          <li>
+            <p><strong>Alternative</strong>: Go to your IBM Cloud dashboard (you may need to login to IBM Cloud in the process) at: <a href="https://cloud.ibm.com/?utm_medium=Exinfluencer&amp;utm_source=Exinfluencer&amp;utm_content=000026UJ&amp;utm_term=10006555&amp;utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMDeveloperSkillsNetworkDB0201ENSkillsNetwork20127838-2022-01-01" target="_blank" rel="external">cloud.ibm.com</a> and click <strong>Services</strong>.</p>
+            <p>
+              <img src="./instructional-labs3.md_files/Services.jpg" alt="Services include the new database instance.">
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>In the Resource list, expand the <strong>Services</strong> and locate and click on your instance of Db2 you provisioned in exercise 2 (the name typically starts with Db2-xx for example Db2-fk, Db2-50, etc.)</p>
+        <p>
+          <img src="./instructional-labs3.md_files/ServicesDb2xx.png" alt="image">
+        </p>
+      </li>
+      <li>
+        <p>Click on the <strong>Go to UI</strong> button.</p>
+        <p>
+          <img src="./instructional-labs3.md_files/Go_to_UI.png" alt="image">
+        </p>
+      </li>
+      <li>
+        <p>The Db2 console will open in a new tab in your web browser. Click on the 3-bar menu icon in the top left corner and then click on <strong>RUN SQL</strong>.</p>
+        <p>
+          <img src="./instructional-labs3.md_files/Run_SQL.jpg" alt="image">
+        </p>
+      </li>
+      <li>
+        <p>On the next screen click on <strong>Create new</strong>.</p>
+        <p>
+          <img src="./instructional-labs3.md_files/RunSQL-Create_new.png" alt="image">
+        </p>
+      </li>
+      <li>
+        <p>The SQL editor will open where you can start typing and running queries.</p>
+        <p>
+          <img src="./instructional-labs3.md_files/SQLeditor.png" alt="image">
+        </p>
+      </li>
+      <li>
+        <p>The SQL editor has several areas for performing different tasks.</p>
+        <p>
+          <img src="./instructional-labs3.md_files/SQLEditorZones.png" alt="image">
+        </p>
+      </li>
+      <li>
+        <p>Click on the <strong>Add New Script +</strong> icon if you want to add a new script for composing queries and then select <strong>Create new</strong>.</p>
+        <p>
+          <img src="./instructional-labs3.md_files/Add_new_Script.PNG" alt="image">
+        </p>
+      </li>
+      <li>
+        <p>When you are asked in the upcoming labs, compose the appropriate SQL query for each problem and run by clicking <strong>Run all</strong> .</p>
+      </li>
+      <li>
+        <p>When you will run the script, looking at the Result section of the executed queries you will know whether the SQL statements ran successfully or not.</p>
+        <p>
+          <img src="./instructional-labs3.md_files/executed_queries.png" alt="image">
+        </p>
+      </li>
+      <li>
+        <p>By clicking the Result section of the executed queries, you can see the query error details or result set to check and ensure the output is what you expected.</p>
+        <ul>
+          <li><strong>NOTE:</strong> You may find that some results don't appear in the result set pane; in this case, click the highlighted <strong>diagonal arrow (View More)</strong> and it will open the full Result Set window containing the results.</li>
+        </ul>
+        <p></p>
+        <p>
+          <img src="./instructional-labs3.md_files/executed_queries_resultset.png" alt="image">
+        </p>
+      </li>
+    </ol>
+    <h1>Summary</h1>
+    <p>You can now find your way into and around the database instance, and you will use these skills in later labs.</p>
+    <h3>Congratulations! You have completed this lab, and you are ready for the next topic.</h3>
+    <h3></h3>
+    <h1>Author(s)</h1>
+    <ul>
+      <li><a href="https://www.linkedin.com/in/ravahuja/?utm_medium=Exinfluencer&amp;utm_source=Exinfluencer&amp;utm_content=000026UJ&amp;utm_term=10006555&amp;utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMDeveloperSkillsNetworkDB0201ENSkillsNetwork20127838-2022-01-01" target="_blank" rel="external">Rav Ahuja</a></li>
+      <li><a href="https://www.linkedin.com/in/sandipsahajoy/?utm_medium=Exinfluencer&amp;utm_source=Exinfluencer&amp;utm_content=000026UJ&amp;utm_term=10006555&amp;utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMDeveloperSkillsNetworkDB0201ENSkillsNetwork20127838-2022-01-01" target="_blank" rel="external">Sandip Saha Joy</a></li>
+    </ul>
+    <h1>Other Contributor(s)</h1>
+    <ul>
+      <li></li>
+    </ul>
+    <h1>Changelog</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Version</th>
+          <th>Changed by</th>
+          <th>Change Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>11-05-2022</td>
+          <td>2.4</td>
+          <td>Hema</td>
+          <td>Updated instruction</td>
+        </tr>
+        <tr>
+          <td>28-04-2022</td>
+          <td>2.3</td>
+          <td>Hema</td>
+          <td>Updated screenshots</td>
+        </tr>
+        <tr>
+          <td>08-07-2021</td>
+          <td>2.2</td>
+          <td>Malika</td>
+          <td>Updated screenshots</td>
+        </tr>
+        <tr>
+          <td>23-12-2020</td>
+          <td>2.1</td>
+          <td>Steve Ryan</td>
+          <td>ID Review</td>
+        </tr>
+        <tr>
+          <td>07-12-2020</td>
+          <td>2.0</td>
+          <td>Sandip Saha Joy</td>
+          <td>Created revised version from DB0201EN</td>
+        </tr>
+        <tr>
+          <td>06-03-2020</td>
+          <td>1.0</td>
+          <td>Rav Ahuja</td>
+          <td>Created initial version</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2></h2>
+    <h3 align="center">© IBM Corporation 2020. All rights reserved.</h3>
+    <h3></h3>
+    <script>window.addEventListener('load', function() {
+snFaculty.inject();
+});</script>
+    <script src="./instructional-labs3.md_files/inject.43989f87.js"></script>
+    <script src="./instructional-labs3.md_files/highlight.min.js"></script>
+    <script src="./instructional-labs3.md_files/highlightjs-badge.min.js"></script>
+  
+
+<style>
+@media print {
+   .code-badge { display: none; }
+}
+    .code-badge-pre {
+        position: relative;
+    }
+    .code-badge {
+        display: flex;
+        flex-direction: row;
+        white-space: normal;
+        background: transparent;
+        background: #333;
+        color: white;
+        font-size: 0.875em;
+        opacity: 0.5;
+        transition: opacity linear 0.5s;
+        border-radius: 0 0 0 7px;
+        padding: 5px 8px 5px 8px;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .code-badge.active {
+        opacity: 0.8;
+    }
+
+    .code-badge:hover {
+        opacity: .95;
+    }
+
+    .code-badge a,
+    .code-badge a:hover {
+        text-decoration: none;
+    }
+
+    .code-badge-language {
+        margin-right: 10px;
+        font-weight: 600;
+        color: goldenrod;
+    }
+    .code-badge-copy-icon {
+        font-size: 1.2em;
+        cursor: pointer;
+        padding: 0 7px;
+        margin-top:2;
+    }
+    .fa.text-success:{ color: limegreen !important }
+</style><div id="CodeBadgeTemplate" style="display:none">
+    <div class="code-badge">
+        <div class="code-badge-language">{{language}}</div>
+        <div title="Copy to clipboard">
+            <i class="{{copyIconClass}} code-badge-copy-icon"></i>
+        </div>
+     </div>
+</div></body></html>

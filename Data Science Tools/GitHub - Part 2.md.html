@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<!-- saved from url=(0182)https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DS0105EN-SkillsNetwork/labs/Module2/GitHub%20-%20Part%202.md.html?origin=www.coursera.org -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./GitHub - Part 2.md_files/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./GitHub - Part 2.md_files/default.min.css">
+  <style type="text/css">/* this file is used for labs on cognitiveclass.ai that were written in markdown */
+
+/* applies to images, i.e. "![]()" in markdown */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* add padding and margins */
+body {
+  padding: 10px;
+  margin: 10px;
+}
+
+/* applies to tables, i.e. "|--|--|" in markdown */
+table td,
+table th {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+/* applies to using quotes, i.e. ">" in markdown */
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 1em 10px 0.1em 10px;
+  quotes: '\201C''\201D''\2018''\2019';
+}
+
+/* the headers need some spacing */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+  padding-top: 20px;
+}
+
+/* Add padding between nested list item */
+ul > li > ul {
+  padding-bottom: 1rem;
+}
+
+.code-badge-language {
+  display: none;
+}
+.code-badge-copy-icon {
+  background: url('data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhciIgZGF0YS1pY29uPSJjb3B5IiBjbGFzcz0ic3ZnLWlubGluZS0tZmEgZmEtY29weSBmYS13LTE0IiByb2xlPSJpbWciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDQ0OCA1MTIiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTQzMy45NDEgNjUuOTQxbC01MS44ODItNTEuODgyQTQ4IDQ4IDAgMCAwIDM0OC4xMTggMEgxNzZjLTI2LjUxIDAtNDggMjEuNDktNDggNDh2NDhINDhjLTI2LjUxIDAtNDggMjEuNDktNDggNDh2MzIwYzAgMjYuNTEgMjEuNDkgNDggNDggNDhoMjI0YzI2LjUxIDAgNDgtMjEuNDkgNDgtNDh2LTQ4aDgwYzI2LjUxIDAgNDgtMjEuNDkgNDgtNDhWOTkuODgyYTQ4IDQ4IDAgMCAwLTE0LjA1OS0zMy45NDF6TTI2NiA0NjRINTRhNiA2IDAgMCAxLTYtNlYxNTBhNiA2IDAgMCAxIDYtNmg3NHYyMjRjMCAyNi41MSAyMS40OSA0OCA0OCA0OGg5NnY0MmE2IDYgMCAwIDEtNiA2em0xMjgtOTZIMTgyYTYgNiAwIDAgMS02LTZWNTRhNiA2IDAgMCAxIDYtNmgxMDZ2ODhjMCAxMy4yNTUgMTAuNzQ1IDI0IDI0IDI0aDg4djIwMmE2IDYgMCAwIDEtNiA2em02LTI1NmgtNjRWNDhoOS42MzJjMS41OTEgMCAzLjExNy42MzIgNC4yNDMgMS43NTdsNDguMzY4IDQ4LjM2OGE2IDYgMCAwIDEgMS43NTcgNC4yNDNWMTEyeiI+PC9wYXRoPjwvc3ZnPg==');
+  background-size: 100% 100%;
+}
+
+.code-badge {
+  bottom: 0 !important;
+  top: unset !important;
+  background: unset !important;
+}
+
+.code-badge > .code-badge-check-icon {
+  background: green;
+}
+.code-badge-check-icon {
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: 0 7px;
+  background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGFyaWEtaGlkZGVuPSJ0cnVlIiBmb2N1c2FibGU9ImZhbHNlIiBkYXRhLXByZWZpeD0iZmFzIiBkYXRhLWljb249ImNoZWNrIiBjbGFzcz0ic3ZnLWlubGluZS0tZmEgZmEtY2hlY2sgZmEtdy0xNiIgcm9sZT0iaW1nIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9IiYjMTA7ICAgIGNvbG9yOiAjMmFmZjMyOyYjMTA7Ij48cGF0aCBmaWxsPSJjdXJyZW50Q29sb3IiIGQ9Ik0xNzMuODk4IDQzOS40MDRsLTE2Ni40LTE2Ni40Yy05Ljk5Ny05Ljk5Ny05Ljk5Ny0yNi4yMDYgMC0zNi4yMDRsMzYuMjAzLTM2LjIwNGM5Ljk5Ny05Ljk5OCAyNi4yMDctOS45OTggMzYuMjA0IDBMMTkyIDMxMi42OSA0MzIuMDk1IDcyLjU5NmM5Ljk5Ny05Ljk5NyAyNi4yMDctOS45OTcgMzYuMjA0IDBsMzYuMjAzIDM2LjIwNGM5Ljk5NyA5Ljk5NyA5Ljk5NyAyNi4yMDYgMCAzNi4yMDRsLTI5NC40IDI5NC40MDFjLTkuOTk4IDkuOTk3LTI2LjIwNyA5Ljk5Ny0zNi4yMDQtLjAwMXoiLz48L3N2Zz4=');
+  background-size: 100% 100%;
+}
+</style></head>
+  <body>
+    <img src="./GitHub - Part 2.md_files/IDSNlogo.png" width="200" height="200">
+    <h2>Add file to Repository in GitHub</h2>
+    <p><strong>Objective for Exercise</strong></p>
+    <ul>
+      <li>To add file to repository on GitHub</li>
+      <li>To add file to repository on GitHub through command line</li>
+    </ul>
+    <p><em>Note: These instructions works on BASH terminal on Windows &amp; Mac terminals.</em></p>
+    <p>Click 'Add file' to add a file</p>
+    <p>
+      <img src="./GitHub - Part 2.md_files/86914757-726b7700-c13e-11ea-8411-dbe00b06171c.png" alt="image">
+    </p>
+    <p>Provide the file name and add a description to that file. To commit the changes in the repository, click ‘Commit New File’</p>
+    <p>
+      <img src="./GitHub - Part 2.md_files/86914831-9464f980-c13e-11ea-869e-71569f13011f.png" alt="image">
+    </p>
+    <p>
+      <img src="./GitHub - Part 2.md_files/86914872-a6df3300-c13e-11ea-8c0f-b71f95601af2.png" alt="image">
+    </p>
+    <p>Adding a file remotely will not be there in the local directory. Check the files using <code>dir</code></p>
+    <p>
+      <img src="./GitHub - Part 2.md_files/86915095-04737f80-c13f-11ea-944a-2c7cf9f06e8e.png" alt="image">
+    </p>
+    <p>As per the screenshot above, there is 1 file in the repository.</p>
+    <p>
+      To pull the file that is added in remote repository to local repository, we use PULL command
+      <code>git pull</code>
+    </p>
+    <p>
+      <img src="./GitHub - Part 2.md_files/86915220-3b499580-c13f-11ea-9ca1-1a520fbd61cc.png" alt="image">
+    </p>
+    <p>After pull, if I check the local repository using dir, there are 2 files as shown:</p>
+    <p>
+      <img src="./GitHub - Part 2.md_files/86915357-7cda4080-c13f-11ea-8550-19deeacc42a9.png" alt="image">
+    </p>
+    <p>
+      To add a branch in master branch
+      <code>git branch branchname</code>
+    </p>
+    <p>
+      Switch the branch
+      <code>git checkout branchname</code>
+    </p>
+    <p>
+      Adding a file in branch
+      <code>echo "#content"&gt;&gt; filename.txt</code>
+    </p>
+    <p>
+      Then add the file and push the file. To create the branch remotely we have to use
+      <code>git push --set-upstream origin branchname</code>
+    </p>
+    <p>
+      <img src="./GitHub - Part 2.md_files/86916988-07bc3a80-c142-11ea-88c3-e395f9cfc9b3.png" alt="image">
+    </p>
+    <p>
+      Switch the branch again to the master using
+      <code>git checkout master</code>
+    </p>
+    <p>
+      Merge command to merge the branches
+      <code>git merge mybranch</code>
+    </p>
+    <p>
+      As the merge command is used the new create branch will be merged to the master branch and the file will be inserted to it. Previously, we have 2 file in the master, now there are 3 files. Make sure to push the files using <code>git push</code>
+      <img src="./GitHub - Part 2.md_files/86917132-3e925080-c142-11ea-859b-1652369ddd8b.png" alt="image">
+    </p>
+    <p>
+      Now, the file which is in the branch, is now in the master branch
+      
+      <img src="./GitHub - Part 2.md_files/86917264-68e40e00-c142-11ea-8f75-934002d6e1ab.png" alt="image">
+    </p>
+    <h2>Author(s)</h2>
+    <h4>Malika Singla</h4>
+    <h4></h4>
+    <h3>Other Contributor(s)</h3>
+    <p>Lavanya</p>
+    <h2>Changelog</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Version</th>
+          <th>Changed by</th>
+          <th>Change Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2020-08-25</td>
+          <td>2.0</td>
+          <td>Lavanya</td>
+          <td>Migrated Lab to Markdown and added to course repo in GitLab</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2></h2>
+    <h3 align="center">© IBM Corporation 2020. All rights reserved.</h3>
+    <h3></h3>
+    <script>window.addEventListener('load', function() {
+snFaculty.inject();
+});</script>
+    <script src="./GitHub - Part 2.md_files/inject.43989f87.js"></script>
+    <script src="./GitHub - Part 2.md_files/highlight.min.js"></script>
+    <script src="./GitHub - Part 2.md_files/highlightjs-badge.min.js"></script>
+  
+
+<style>
+@media print {
+   .code-badge { display: none; }
+}
+    .code-badge-pre {
+        position: relative;
+    }
+    .code-badge {
+        display: flex;
+        flex-direction: row;
+        white-space: normal;
+        background: transparent;
+        background: #333;
+        color: white;
+        font-size: 0.875em;
+        opacity: 0.5;
+        transition: opacity linear 0.5s;
+        border-radius: 0 0 0 7px;
+        padding: 5px 8px 5px 8px;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .code-badge.active {
+        opacity: 0.8;
+    }
+
+    .code-badge:hover {
+        opacity: .95;
+    }
+
+    .code-badge a,
+    .code-badge a:hover {
+        text-decoration: none;
+    }
+
+    .code-badge-language {
+        margin-right: 10px;
+        font-weight: 600;
+        color: goldenrod;
+    }
+    .code-badge-copy-icon {
+        font-size: 1.2em;
+        cursor: pointer;
+        padding: 0 7px;
+        margin-top:2;
+    }
+    .fa.text-success:{ color: limegreen !important }
+</style><div id="CodeBadgeTemplate" style="display:none">
+    <div class="code-badge">
+        <div class="code-badge-language">{{language}}</div>
+        <div title="Copy to clipboard">
+            <i class="{{copyIconClass}} code-badge-copy-icon"></i>
+        </div>
+     </div>
+</div></body></html>
